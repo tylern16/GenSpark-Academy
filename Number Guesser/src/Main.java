@@ -20,7 +20,18 @@ public class Main {
         playGame(name);
     }
 
+    public static String setOutput(int guess, int randomNum, String name, int count) {
+        if (guess > randomNum) {
+            return "Your guess is too high. Guess again:";
+        } else if (guess < randomNum) {
+            return "Your guess is too low. Guess again:";
+        } else {
+            return "Good job, " + name + "! You guessed my number in " + count + " guesses!";
+        }
+    }
+
     public static void playGame(String name) throws InputMismatchException {
+
         int randomNum = (int) Math.ceil(Math.random()*20);
 
         System.out.println("Well, " + name + ", I am thinking of a number between 1 and 20.");
@@ -35,20 +46,13 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.out.println(e);
                 guess = (int) Math.ceil(Math.random()*20);
-                System.out.println("Ypu did not input a number");
+                System.out.println("You did not input a number");
                 System.out.println("We will assume you meant to guess " + guess);
             }
 
-            if (guess > randomNum) {
-                System.out.println("Your guess is too high.");
-                System.out.println("Take a guess.");
-            } else if (guess < randomNum) {
-                System.out.println("Your guess is too low.");
-                System.out.println("Take a guess.");
-            } else if (guess == randomNum) {
-                System.out.println("Good job, " + name + "! You guessed my number in " + count + " guesses!");
-                break;
-            }
+            String output = setOutput(guess, randomNum, name, count);
+            System.out.println(output);
+            if (output.startsWith("Good")) break;
             count++;
         }
 
@@ -57,6 +61,7 @@ public class Main {
         System.out.println("Would you like to play again? (y or n)");
 
         String ans;
+
         try {
             ans = sc.next();
         } catch (IllegalStateException e) {
