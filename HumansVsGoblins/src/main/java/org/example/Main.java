@@ -30,6 +30,7 @@ public class Main {
         System.out.println("You are in a world of Goblins fighting to survive!");
 
         Land land = new Land();
-        System.out.println(land.drawLand());
+        Human human = new Human(6,6);
+        System.out.println(land.drawLand(human.getxPosition(), human.getyPosition()));
     }
 }
