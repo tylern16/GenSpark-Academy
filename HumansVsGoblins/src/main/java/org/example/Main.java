@@ -25,6 +25,8 @@ package org.example;
 //combat
 //human moving
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("You are in a world of Goblins fighting to survive!");
