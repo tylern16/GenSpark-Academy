@@ -25,7 +25,9 @@ package org.example;
 //combat
 //human moving
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,4 +37,5 @@ public class Main {
         Human human = new Human(6,6);
         System.out.println(land.drawLand(human.getxPosition(), human.getyPosition()));
     }
+
 }
