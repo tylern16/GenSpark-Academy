@@ -2,14 +2,14 @@ package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Student {
 
     public int id;
     public String name;
-    //private List<Phone> ph;
-
+    private List<Phone> ph;
     public Address address;
 
     public int getId() {
@@ -36,31 +36,22 @@ public class Student {
         this.address = address;
     }
 
-    public void sayHello() {
+    public List<Phone> getPh() {
+        return ph;
+    }
+
+    public void setPh(List<Phone> ph) {
+        this.ph = ph;
+    }
+
+    public void displayInfo() {
         System.out.println("Name: " + name);
         System.out.println("ID: " + id);
         System.out.println("Address: " + address);
+        System.out.println("Numbers: ");
+        Iterator<Phone> itr = ph.iterator();
+        while (itr.hasNext()){
+            System.out.println(itr.next());
+        }
     }
 }
-
-/*
-all private
-
-class student {
-    int id;
-    String name
-    list<Phone> ph;
-    Address add;
-}
-
-class Phone {
-    String mob;
-}
-
-class Address {
-    String citry;
-    String state;
-    String country:
-    String zip;
-}
- */

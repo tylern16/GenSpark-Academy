@@ -9,13 +9,30 @@
         <property name="name" value="Timothy" />
         <property name="id" value="42" />
         <property name="address" ref="Address" />
+        <property name="ph" >
+            <list>
+                <ref bean="Phone1" />
+                <ref bean="Phone2" />
+                <ref bean="Phone3" />
+            </list>
+        </property>
     </bean>
 
     <bean id="Address" class="org.example.Address">
-        <property name="city" value="Austin" />
-        <property name="state" value="TX" />
-        <property name="country" value="USA" />
-        <property name="zip" value="12345" />
+        <constructor-arg index="0" value="Austin" />
+        <constructor-arg index="1" value="TX" />
+        <constructor-arg index="2" value="USA" />
+        <constructor-arg index="3" value="12345" />
+    </bean>
+
+    <bean id="Phone1" class="org.example.Phone" >
+        <constructor-arg index="0" value="(748)485-9859" />
+    </bean>
+    <bean id="Phone2" class="org.example.Phone" >
+        <constructor-arg index="0" value="(848)485-9859" />
+    </bean>
+    <bean id="Phone3" class="org.example.Phone" >
+        <constructor-arg index="0" value="(948)485-9859" />
     </bean>
 
 </beans>
