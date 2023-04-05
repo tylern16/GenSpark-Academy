@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import javax.management.MXBean;
+
 @Configuration
 @ComponentScan(basePackages = "org.example")
 public class SpringConfig {
@@ -17,6 +19,21 @@ public class SpringConfig {
     @Bean
     public Address getAddress() {
         return new Address("Austin", "TX", "USA", "12345");
+    }
+
+    @Bean
+    public Phone getPhone1() {
+        return new Phone("(835)456-5467");
+    }
+
+    @Bean
+    public Phone getPhone2() {
+        return new Phone("(735)456-5467");
+    }
+
+    @Bean
+    public Phone getPhone3() {
+        return new Phone("(935)456-5467");
     }
 
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +11,8 @@ public class Student {
 
     public int id;
     public String name;
-    //private List<Phone> ph;
+    @Autowired
+    private List<Phone> ph;
     @Autowired
     public Address address;
 
@@ -31,5 +33,7 @@ public class Student {
         System.out.println("Name: " + name);
         System.out.println("ID: " + id);
         System.out.println("Address: " + address);
+        System.out.println("Numbers: " + ph);
+
     }
 }
