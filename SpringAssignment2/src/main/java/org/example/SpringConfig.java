@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import javax.management.MXBean;
 
 @Configuration
-@ComponentScan(basePackages = "org.example")
 public class SpringConfig {
 
     @Bean
