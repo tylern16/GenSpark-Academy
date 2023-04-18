@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,6 +28,8 @@ import javax.sql.DataSource;
 import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
 
 @Configuration
+//maybe not
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
@@ -33,40 +37,17 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    //MAY NOT NEED
-    @Bean
-    DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2)
-                .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
-                .build();
-    };
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Bean
-    public UserDetailsService jdbcUserDetailsService(DataSource dataSource) {
-        UserDetails user = User
-                .withUsername("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .build();
-
-        UserDetails admin = User
-                .withUsername("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .build();
-
-        //----------------USE database
-        //put user and admin into db with username, pw, and role
-        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-        users.createUser(user);
-        users.createUser(admin);
-        return users;
-
-        //return new InMemoryUserDetailsManager(user, admin);
+    AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider
+                = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
     }
-
-
 
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
@@ -80,7 +61,7 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .httpBasic();
         return httpSecurity.build();
     }
 }
