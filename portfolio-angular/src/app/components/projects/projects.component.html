@@ -1,4 +1,8 @@
 <app-button (btnClick)="toggleAddTask()">Add</app-button>
 
-<app-project-item *ngFor="let project of projects" [project]="project"></app-project-item>
+<app-add-project (onAddProject)="addProject($event)"></app-add-project>
+
+<app-project-item *ngFor="let project of projects" [project]="project" (onDeleteProject)="deleteProject(project)"></app-project-item>
+
+
 

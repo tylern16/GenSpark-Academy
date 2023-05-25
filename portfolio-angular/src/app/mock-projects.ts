@@ -2,9 +2,11 @@ import { Project } from "./Project"
 
 export const PROJECTS: Project[] = [
     {
-    title: "Python Web Scraper"
+        id: 1,
+        title: "Python Web Scraper"
     },
     {
-    title: "Calendr"
+        id: 2,
+        title: "Calendr"
     }
 ]

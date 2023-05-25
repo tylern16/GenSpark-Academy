@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { ProjectItemComponent } from './components/project-item/project-item.com
     AboutComponent,
     ButtonComponent,
     ProjectsComponent,
-    ProjectItemComponent
+    ProjectItemComponent,
+    AddProjectComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

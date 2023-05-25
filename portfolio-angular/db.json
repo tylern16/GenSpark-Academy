@@ -1,10 +1,12 @@
 {
-    "projects":[ 
-        {
-            "title": "Python Web Scraper"
-        },
-        {
-            "title": "Calendr"
-        }        
-    ]
+  "projects": [
+    {
+      "id": "1",
+      "title": "Python Web Scraper"
+    },
+    {
+      "id": "2",
+      "title": "Calendr"
+    }
+  ]
 }

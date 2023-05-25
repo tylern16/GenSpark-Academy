@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/Project';
 
 @Component({
@@ -9,5 +9,10 @@ import { Project } from 'src/app/Project';
 export class ProjectItemComponent {
   @Input()
   project!: Project;
+  @Output() onDeleteProject: EventEmitter<Project> = new EventEmitter()
 
+  onDelete(project: any) {
+    console.log(project)
+    this.onDeleteProject.emit(project);
+  }
 }

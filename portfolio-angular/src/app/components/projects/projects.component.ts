@@ -20,4 +20,17 @@ export class ProjectsComponent {
   toggleAddTask() {
     console.log("toggle");
   }
+
+  deleteProject(project: Project) {
+    this.projectService
+      .deleteProject(project)
+      .subscribe(
+        () => (this.projects = this.projects.filter((p) => p.id !== project.id))
+      );
+  }
+
+  addProject(project: Project) {
+    console.log(project);
+    this.projectService.addProject(project).subscribe((project)=> this.projects.push(project))
+  }
 }
