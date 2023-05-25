@@ -1,0 +1,59 @@
+html {
+    min-height: 100%;
+}
+body {
+    background-color: pink;
+    background-image: linear-gradient(to bottom right, #f77e9a 70%, #a457ab);
+    min-height: 100%;
+}
+
+#main-card{
+    background-color: white;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJIG1H7LI9za3eyKveksBj7VTTvwYN4_Oh0g&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size: 100% 150px;
+    width: 35%;
+    margin: auto auto;
+    text-align: center;
+    border-radius: 16px;
+}
+
+#social-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#follow-btn {
+    background-color: #edaf02;
+    padding: 0.8em;
+    width: 70%;
+    border-radius: 16px;
+    margin: 1em auto;
+}
+
+#bio-text {
+    padding: 1em;
+    padding-bottom: 2em;
+}
+
+#profile-pic {
+    margin-top: 75px;
+    width: 150px;
+    border-radius: 100%;
+    box-shadow: 0px 5px 5px #3d3d3d ;
+}
+
+#name {
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+}
+
+#social-container h1 {
+    color: #1a1af0;
+    margin-bottom: 0;
+}
+
+#social-container p {
+    margin-top: 0;
+}
+
