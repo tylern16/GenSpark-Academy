@@ -1,0 +1,9 @@
+h2 {
+    text-align: center;
+    padding: 1em;
+}
+p {
+    width: 40%;
+    margin: auto auto;
+    text-align: justify;
+}
